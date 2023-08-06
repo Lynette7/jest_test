@@ -1,8 +1,32 @@
 import { toUpperCase } from "../app/Utils"
 import { getStringInfo } from "../app/Utils"
+import { StringUtils } from "../app/Utils"
 
 
 describe('Utils test suite', () => {
+
+    describe.only('StringUtils tests', ()=>{
+
+        let sut: StringUtils;
+
+        beforeEach(()=>{
+            sut = new StringUtils();
+            console.log('Setup');
+        })
+
+        afterEach(()=>{
+            //clearing mocks
+            console.log('Teardown');
+        })
+
+        it('Should return correct UpperCase', ()=>{
+            const actual = sut.toUpperCase('abc');
+
+            expect(actual).toBe('ABC');
+            console.log('Actual test');
+        })
+    });
+
 
     it('should return uppercase of valid string', ()=>{
         //arrange:
@@ -16,6 +40,19 @@ describe('Utils test suite', () => {
         expect(actual).toBe(expected);
     })
 
+    //Parametrized tests
+    describe.only('ToUpperCase examples', ()=>{
+        it.each([
+            {input:'abc', expected: 'ABC'},
+            {input:'My-string', expected: 'MY-STRING'},
+            {input:'def', expected: 'DEF'},
+        ])('$input toUpperCase should be $expected', ({input, expected})=>{
+            const actual = toUpperCase(input);
+            expect(actual).toBe(expected);
+        });
+    })
+
+    //Multiple tests
     describe('getStringInfo for arg My-string should', ()=>{
         test('return right length', ()=>{
             const actual = getStringInfo('My-string');
@@ -52,6 +89,7 @@ describe('Utils test suite', () => {
         });
     });
 
+    //Jest assertions and matchers
     /*it.only('should return info for valid string', ()=>{
         const actual = getStringInfo('My-string');
 
