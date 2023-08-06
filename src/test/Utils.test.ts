@@ -5,7 +5,7 @@ import { StringUtils } from "../app/Utils"
 
 describe('Utils test suite', () => {
 
-    describe('StringUtils tests', ()=>{
+    describe.only('StringUtils tests', ()=>{
 
         let sut: StringUtils;
 
@@ -19,14 +19,14 @@ describe('Utils test suite', () => {
             console.log('Teardown');
         })*/
 
-        it('Should return correct UpperCase', ()=>{
+        it.only('Should return correct UpperCase', ()=>{
             const actual = sut.toUpperCase('abc');
 
             expect(actual).toBe('ABC');
             console.log('Actual test');
         })
 
-        it.only('Should throw error on invalid argument - function', ()=>{
+        it('Should throw error on invalid argument - function', ()=>{
             //using function
             function expectError() {
                 const actual = sut.toUpperCase('');
@@ -35,14 +35,14 @@ describe('Utils test suite', () => {
             expect(expectError).toThrowError('Invalid argument!');
         })
 
-        it.only('Should throw error on invalid argument - arrow function', ()=>{
+        it('Should throw error on invalid argument - arrow function', ()=>{
             //using arrow function
             expect(()=>{
                 sut.toUpperCase('');
             }).toThrowError('Invalid argument!');
         })
 
-        it.only('Should throw error on invalid argument - try catch block', (done)=>{
+        it('Should throw error on invalid argument - try catch block', (done)=>{
             //using try catch block
             try {
                 sut.toUpperCase('');
@@ -70,7 +70,7 @@ describe('Utils test suite', () => {
     })
 
     //Parametrized tests
-    describe.only('ToUpperCase examples', ()=>{
+    describe('ToUpperCase examples', ()=>{
         it.each([
             {input:'abc', expected: 'ABC'},
             {input:'My-string', expected: 'MY-STRING'},
