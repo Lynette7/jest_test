@@ -5,7 +5,7 @@ import { StringUtils } from "../app/Utils"
 
 describe('Utils test suite', () => {
 
-    describe.only('StringUtils tests', ()=>{
+    describe('StringUtils tests', ()=>{
 
         let sut: StringUtils;
 
@@ -19,7 +19,7 @@ describe('Utils test suite', () => {
             console.log('Teardown');
         })*/
 
-        it.only('Should return correct UpperCase', ()=>{
+        it('Should return correct UpperCase', ()=>{
             const actual = sut.toUpperCase('abc');
 
             expect(actual).toBe('ABC');
